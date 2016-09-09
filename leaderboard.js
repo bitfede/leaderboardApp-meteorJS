@@ -3,9 +3,11 @@ console.log('Hello world!');
 PlayersList = new Mongo.Collection('players');
 
 if (Meteor.isClient) {
-	console.log('Hello Client!');
+	Template.leaderboard.player = function() {
+		return 'some text';
+	};
 }
 
 if (Meteor.isServer) {
-	console.log('Hello Server');
+
 }
