@@ -6,7 +6,7 @@ if (Meteor.isClient) {
 	Template.leaderboard.helpers( {
 		//helper functions go here in JSON format
 		'player' : function() {
-			return PlayersList.find();
+			return PlayersList.find({}, { sort: {score: -1 , name: 1}});
 		},
 		'selectedClass': function() {
 			var playerId = this._id;
@@ -14,6 +14,10 @@ if (Meteor.isClient) {
 			if (selectedPlayer == playerId) {
 				return "selected";
 			}
+		},
+		'selectedPlayer': function() {
+			var selectedPlayer = Session.get('selectedPlayer');
+			return PlayersList.findOne({ _id: selectedPlayer})
 		}
 	});
 
