@@ -9,8 +9,14 @@ if (Meteor.isClient) {
 			return PlayersList.find();
 		}
 	});
+
+	Template.leaderboard.events({
+		'click .player': function() {
+			console.log('You clicked a player element!')
+		}
+	});
 }
 
 if (Meteor.isServer) {
-
+	
 }
