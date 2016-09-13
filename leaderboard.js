@@ -39,7 +39,7 @@ if (Meteor.isClient) {
 		},
 		'click .remove': function(){
     var selectedPlayer = Session.get('selectedPlayer');
-    console.log(selectedPlayer + "ssss")
+    PlayersList.remove({ _id: selectedPlayer });
 		}
 	});
 
