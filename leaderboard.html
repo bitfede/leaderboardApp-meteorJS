@@ -2,9 +2,31 @@
     <title>Leaderboard</title>
 </head>
 <body>
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '911053912333950',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    <p>{{> loginButtons}}</p>
     <h1>Leaderboard</h1>
-    {{> addPlayerForm}}
-    {{> leaderboard}}
+    {{#if currentUser}}
+        {{> addPlayerForm}}
+        {{> leaderboard}}
+    {{else}}
+        <p>You must be logged in to see this content</p>
+    {{/if}}
 </body>
 
 <template name="leaderboard">
