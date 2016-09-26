@@ -4,6 +4,8 @@ var PlayersList = new Mongo.Collection('players');
 
 if (Meteor.isClient) {
 
+	Meteor.subscribe('thePlayers');
+
 	//---------LEADERBOARD template
 
 	Template.leaderboard.helpers( {
@@ -64,7 +66,10 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-	
+Meteor.publish('thePlayers', function() {
+	var currentUserId = this.userId;
+	return PlayersList.find( { createdBy: currentUserId } );
+});
 }
 
 
